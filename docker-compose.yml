@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    command: node src/server.js
+    working_dir: /usr/server
+    environment:
+      PORT: 3000
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_DATABASE: rickandmorty
+      DB_HOSTNAME: mysql
+    volumes:
+      - ./backend:/usr/server
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: rickandmorty
+    ports:
+      - "3306:3306"
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
