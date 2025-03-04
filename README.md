@@ -54,22 +54,39 @@ Aplicação full stack que exibe informações sobre os personagens da série Ri
 cd rick-and-morty-app
 ```
 
+1.1. Instalar depedências
+
+1.2. Acesse a dependência da pasta backend
+```
+cd rickandmorty/backend
+```
+
+```
+npm install
+```
+1.3. Acesse a dependência da pasta frontend
+```
+cd rickandmorty/frontend
+```
+
+```
+npm install
+```
+
 2. Execute o Docker Compose
 
 ```
 docker-compose up -d
-
-2.1 Caso seu sistema operacional for outro, ou até sua versão de Docker for a partir da v.2 utilize
 ```
+2.1 Caso seu sistema operacional for outro, ou até sua versão de Docker for a partir da v.2 utilize
 
+```
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 docker compose up
-
 ```
 
-3. Execute a migração do banco de dados
+3. Execute a migração do banco de dados em outro terminal
 ```
-
 docker exec -it backend node src/database/migration.js
 
 ```
